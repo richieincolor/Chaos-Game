@@ -7,6 +7,10 @@
 #include <SFML/System.hpp>
 // #include <SFML/Audio.hpp>
 
+
+
+#include "game.h"
+
 using namespace std;
 using namespace sf;
 
@@ -36,5 +40,9 @@ int main()
                 break;
             }
         }
+        // Update
+        window.clear(Color::Cyan);
+        // Render
+        window.display();
     }
 }
