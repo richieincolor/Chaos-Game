@@ -33,11 +33,18 @@ private:
 
     void printDots();
     void autoPopulate();
+    void initCircles();
+
 
     int getRand();
 
     // Points
     vector<Vector2i> dots;
+
+    // Objects 
+    vector<CircleShape> circles;
+
+    CircleShape testcircle;
 
 
 public:

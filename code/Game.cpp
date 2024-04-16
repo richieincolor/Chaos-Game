@@ -4,6 +4,8 @@
 void Game::initVars()
 {
     this->window = nullptr;
+    srand(time(nullptr));
+    //this->testcircle.getFillColor(Color::Black);
 }
 
 void Game::initWindow()
@@ -11,16 +13,26 @@ void Game::initWindow()
     this->vm.width = 800;
     this->vm.height = 600;
     this->window = new RenderWindow(this->vm, "Testing");
+    this->window->setFramerateLimit(400);
 }
 
 void Game::addDot()
 {
-    this->dots.push_back(Mouse::getPosition());
+    Vector2i pos = Mouse::getPosition();
+    this->dots.push_back(pos);
+    CircleShape temp = CircleShape(2, 30);
+    temp.setPosition(pos.x, pos.y);
+    temp.setFillColor(Color::Black);
+    circles.push_back(temp);
 }
 
 void Game::addDot(Vector2i pos)
 {
     this->dots.push_back(pos);
+    CircleShape temp = CircleShape(2,30);
+    temp.setPosition(pos.x, pos.y);
+    temp.setFillColor(Color::Black);
+    circles.push_back(temp);
 }
 
 void Game::printDots(){
@@ -31,15 +43,24 @@ void Game::printDots(){
 
 void Game::autoPopulate()
 {
-    if(this->dots.size()>=3){
+    if(this->dots.size()>=3 && this->dots.size()<1000000){
         int r = this->getRand();
-
+        Vector2i rando = this->dots[r];
+        Vector2i last = this->dots.back();
+        Vector2i temp;
+        temp.x = (last.x + rando.x)/2;
+        temp.y = (last.y + rando.y)/2;
+        this->addDot(temp);
     }
+}
+
+void Game::initCircles()
+{
+    //CircleShape* c = new CircleShape;
 }
 
 int Game::getRand()
 {
-    srand(time(nullptr));
     return rand()%3;
 }
 
@@ -64,7 +85,14 @@ void Game::update()
 void Game::render()
 {
     this->window->clear(Color::Cyan);
+    
+    for(CircleShape c : this->circles){
+        this->window->draw(c);
+    }
+    
     this->window->display();
+
+
 }
 
 void Game::pollEvents()
@@ -90,7 +118,9 @@ void Game::pollEvents()
             }
             break;
         }
+    
     }
+    this->autoPopulate();
 }
 
 // ACCESSORS
