@@ -12,13 +12,17 @@ void Game::initWindow()
 {
     this->vm.width = 800;
     this->vm.height = 600;
+    //this->vm.getFullscreenModes();
     this->window = new RenderWindow(this->vm, "Testing");
     this->window->setFramerateLimit(400);
 }
 
 void Game::addDot()
 {
-    Vector2i pos = Mouse::getPosition();
+    //Vector2i pos = Mouse::getPosition();
+    Vector2i pos;
+    pos.x = this->ev.mouseButton.x;
+    pos.y = this->ev.mouseButton.y;
     this->dots.push_back(pos);
     CircleShape temp = CircleShape(2, 30);
     temp.setPosition(pos.x, pos.y);
@@ -89,10 +93,7 @@ void Game::render()
     for(CircleShape c : this->circles){
         this->window->draw(c);
     }
-    
     this->window->display();
-
-
 }
 
 void Game::pollEvents()
@@ -118,7 +119,6 @@ void Game::pollEvents()
             }
             break;
         }
-    
     }
     this->autoPopulate();
 }
