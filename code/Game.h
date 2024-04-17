@@ -25,8 +25,13 @@ private:
     VideoMode vm;
     Event ev;
 
+
+    Font* font;
+    Text *msg1, *msg2, *msg3, *msg4, *msg5;
+
     // Private Functions
     void initVars();
+    void initFont();
     void initWindow();
     void addDot();
     void addDot(Vector2i pos);
@@ -55,6 +60,8 @@ public:
     // Public Functions
     void update();
     void render();
+    void drawText();
+    void drawCircles();
     void pollEvents();
 
     // Accessors
