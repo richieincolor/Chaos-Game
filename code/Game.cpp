@@ -25,7 +25,7 @@ void Game::initVars()
     this->msg1->setFont(*this->font);
     this->msg1->setCharacterSize(28);
     this->msg1->setFillColor(Color::White);
-    this->msg1->setPosition(900, 50);
+    this->msg1->setPosition(800, 50);
     this->msg1->setString("Hi. Try Clicking Anywhere.");
 
     this->msg2->setFont(*this->font);
