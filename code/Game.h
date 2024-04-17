@@ -43,6 +43,8 @@ private:
 
     int getRand();
 
+    int rand256();
+
     // Points
     vector<Vector2i> dots;
 

@@ -31,19 +31,19 @@ void Game::initVars()
     this->msg2->setFont(*this->font);
     this->msg2->setCharacterSize(28);
     this->msg2->setFillColor(Color::White);
-    this->msg2->setPosition(900, 50);
+    this->msg2->setPosition(810, 50);
     this->msg2->setString("Click somewhere else.");
 
     this->msg3->setFont(*this->font);
     this->msg3->setCharacterSize(28);
     this->msg3->setFillColor(Color::White);
-    this->msg3->setPosition(900, 50);
+    this->msg3->setPosition(770, 50);
     this->msg3->setString("Excellent. How about a third click.");
 
     this->msg4->setFont(*this->font);
     this->msg4->setCharacterSize(28);
     this->msg4->setFillColor(Color::White);
-    this->msg4->setPosition(900, 50);
+    this->msg4->setPosition(600, 50);
     this->msg4->setString("I know I've asked a lot of you, but I think you've got one more click in you.");
 
     this->msg5->setFont(*this->font);
@@ -88,7 +88,7 @@ void Game::addDot(Vector2i pos)
     this->dots.push_back(pos);
     CircleShape temp = CircleShape(2,30);
     temp.setPosition(pos.x, pos.y);
-    temp.setFillColor(Color::White);
+    temp.setFillColor(Color(rand256(),rand256(),rand256()));
     circles.push_back(temp);
 }
 
@@ -118,6 +118,10 @@ void Game::initCircles()
 int Game::getRand()
 {
     return rand()%3;
+}
+
+int Game::rand256(){
+    return rand()%256;
 }
 
 // CONSTRUCTOR / DESTRUCTOR
