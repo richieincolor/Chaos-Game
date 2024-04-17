@@ -4,9 +4,7 @@
 
 int main()
 {
-
     Game game;
-
     // Game Loop
     while (game.running())
     {
